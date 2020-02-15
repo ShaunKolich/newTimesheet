@@ -1,6 +1,7 @@
 package com.skillstorm.timesheet.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.skillstorm.timesheet.beans.Timesheet;
 import com.skillstorm.timesheet.beans.User;
 import com.skillstorm.timesheet.repository.PositionRepository;
 import com.skillstorm.timesheet.repository.TimesheetRepository;
 import com.skillstorm.timesheet.repository.UserRepository;
-
+import com.skillstorm.timesheet.service.TimesheetService;
 
 @RestController
 @RequestMapping(value = "/timesheets")
@@ -26,28 +28,36 @@ import com.skillstorm.timesheet.repository.UserRepository;
 public class TimeSheetController {
 
 	private static final Logger log = Logger.getLogger(TimeSheetController.class);
-	
+
 	@Autowired
 	private TimesheetRepository timeSheetRepo;
 	// all time sheets
-	
-	@Autowired 
+
+	@Autowired
 	private PositionRepository positionRepo;
-	
+
 	@Autowired
 	private UserRepository userRepo;
-	
+
+	@Autowired
+	private TimesheetService timeSheetService;
+
 	@GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Timesheet>> findAllTimesheet(){
+	public ResponseEntity<List<Timesheet>> findAllTimesheet() {
 		return new ResponseEntity<List<Timesheet>>(timeSheetRepo.findAll(), HttpStatus.OK);
 	}
+
+	@GetMapping(value = "/timesheet/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Timesheet findById(@PathVariable int id) {
+		Optional<Timesheet> opt = timeSheetRepo.findById(id);
+		if (opt.isPresent()) {
+			log.info(timeSheetRepo.findById(id));
+			return opt.get();
+			
+		} else {
+			return new Timesheet();
+		}
 	
-	@GetMapping(value = "/timesheet/{userName}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<User> getTimeSheetByName(@PathVariable String userName){
-		
-//		User user = userRepo.
-		
-		return null;
 	}
-	
+
 }
