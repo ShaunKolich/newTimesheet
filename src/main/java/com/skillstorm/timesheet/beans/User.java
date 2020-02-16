@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "USER_ID")
 	@JsonProperty(value = "userId")
 	private int userId;
@@ -88,9 +88,24 @@ public class User {
 		this.timesheet = timesheet;
 		this.position = position;
 	}
-
+	
 	public String getUserName() {
 		return userName;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public void setUserNanme(String userName) {

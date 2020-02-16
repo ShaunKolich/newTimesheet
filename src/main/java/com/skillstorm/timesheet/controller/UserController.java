@@ -9,9 +9,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,14 +43,26 @@ public class UserController {
 		return new ResponseEntity<List<User>>(userRepo.findUserID(userName),HttpStatus.OK);
 	}
 	
-	@PostMapping(value="/user/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value= "/user/create", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public ResponseEntity<User> addUser(@RequestBody User user){
-		
-		
 		return new ResponseEntity<User>(userRepo.save(user),HttpStatus.OK);
 	}
 	
+	@PutMapping(value = "/user/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public ResponseEntity<User> updateUser(@RequestBody User user){
+		return new ResponseEntity<User>(userRepo.save(user), HttpStatus.OK);
+		
+	}
 	
-	
+	@DeleteMapping(value = "/remove/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<User> deleteUser(@PathVariable int id){
+		if (userRepo.findById(id) == null) {
+			return new ResponseEntity<User>(HttpStatus.UNAUTHORIZED);
+		} else {
+			userRepo.deleteById(id);
+		}
+		return new ResponseEntity<User>(HttpStatus.OK);
+	}
 }
