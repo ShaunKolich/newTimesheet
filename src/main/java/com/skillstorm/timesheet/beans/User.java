@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "USER_ID")
 	@JsonProperty(value = "userId")
 	private int userId;
@@ -34,7 +34,7 @@ public class User {
 	@JsonProperty(value = "lastName")
 	private String lastName;
 	
-	@Column(name = "EMAIL")
+	@Column(name = "EMAIL", unique = true)
 	@JsonProperty(value = "email")
 	private String email;
 	
@@ -42,7 +42,7 @@ public class User {
 	@JsonProperty(value = "password")
 	private String password;
 	
-	@Column(name = "USER_NAME")
+	@Column(name = "USER_NAME", unique = true)
 	@JsonProperty(value = "userName")
 	private String userName;
 
