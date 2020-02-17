@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import {
-    Collapse,
     Navbar,
-    NavbarToggler,
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
-    NavbarText
+    NavLink
   } from 'reactstrap';
+import './css/navbar.css';
+
 
 
 class NavBar extends Component {
@@ -18,18 +17,31 @@ class NavBar extends Component {
     render() { 
         return (
             
-            <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Skill Storm Timesheet</NavbarBrand>
+    <div className = "nav_container">
+      <Navbar light expand="md">
+        <NavbarBrand href="/" className= "nav_items">Skill Storm Timesheet</NavbarBrand>
             <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="/components/">Components</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-            </NavItem>
-          </Nav>
-          <NavbarText>Simple Text</NavbarText>
+                <NavItem>
+                        <NavLink>
+                            <Link to ="/" className="nav_items"> Home </Link>
+                        </NavLink>
+                </NavItem>
+                <NavItem>
+                        <NavLink>
+                            <Link to ="/submit" className="nav_items">Submit Timesheet </Link>
+                        </NavLink>
+                </NavItem>
+                <NavItem>
+                        <NavLink>
+                            <Link to ="/dashboard" className="nav_items">View Timesheets
+                            </Link>
+                        </NavLink>
+                </NavItem>
+            
+                <NavItem>
+                        <Link to ="/login" className = "login" >Login</Link>
+                </NavItem> 
+          
      
       </Navbar>
     </div>
