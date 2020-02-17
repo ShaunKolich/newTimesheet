@@ -3,6 +3,8 @@ package com.skillstorm.timesheet.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -70,13 +72,13 @@ public class TimeSheetController {
 	
 	@PostMapping(value = "/timesheet/create",consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public ResponseEntity <Timesheet> createTimeSheet(@RequestBody Timesheet timesheet){
+	public ResponseEntity <Timesheet> createTimeSheet(@Valid @RequestBody Timesheet timesheet){
 		return new ResponseEntity<Timesheet>(timeSheetRepo.save(timesheet),HttpStatus.OK);
 	}
 
 	@PutMapping(value = "/timesheet/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public ResponseEntity<Timesheet> updateTimesheet(@RequestBody Timesheet timesheet){
+	public ResponseEntity<Timesheet> updateTimesheet(@Valid @RequestBody Timesheet timesheet){
 		return new ResponseEntity<Timesheet>(timeSheetRepo.save(timesheet),HttpStatus.OK);
 	}
 	

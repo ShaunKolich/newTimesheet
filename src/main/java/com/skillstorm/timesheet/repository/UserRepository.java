@@ -14,6 +14,10 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	@Modifying
 	@Query("select u from User u where u.userName = ?1")
 	public List<User> findUserID(String userName);
+    
+//	@Modifying
+//	@Query()
+//	public User saveAll(User user);
 	
 	
 }

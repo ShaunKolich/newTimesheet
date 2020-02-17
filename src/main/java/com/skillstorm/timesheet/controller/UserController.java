@@ -2,6 +2,8 @@ package com.skillstorm.timesheet.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,17 +43,17 @@ public class UserController {
 	@GetMapping(value = "/user/{userName}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity <List<User>> getLogin(@PathVariable String userName){
 		return new ResponseEntity<List<User>>(userRepo.findUserID(userName),HttpStatus.OK);
-	}
+		}
 	
 	@PostMapping(value= "/user/create", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public ResponseEntity<User> addUser(@RequestBody User user){
+	public ResponseEntity<User> addUser(@Valid @RequestBody User user){
 		return new ResponseEntity<User>(userRepo.save(user),HttpStatus.OK);
 	}
 	
 	@PutMapping(value = "/user/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public ResponseEntity<User> updateUser(@RequestBody User user){
+	public ResponseEntity<User> updateUser(@Valid @RequestBody User user){
 		return new ResponseEntity<User>(userRepo.save(user), HttpStatus.OK);
 		
 	}
