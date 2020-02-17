@@ -34,7 +34,7 @@ import com.skillstorm.timesheet.service.TimesheetService;
 
 @RestController
 @RequestMapping(value = "/timesheets")
-//@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
 
 public class TimeSheetController {
 
