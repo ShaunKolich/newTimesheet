@@ -61,9 +61,9 @@ public class Timesheet {
 	@JsonProperty(value = "sundayHours")
 	private float sundayHours;
 	
-	@Column(name = "STATUS_ID")
+	@Column(name = "APPROVAL")
 	@JsonIgnore(value = true)
-	private int statusId;
+	private boolean approval;
 	
 	@Column(name = "WEEKEND_DATE")
 	@JsonProperty(value = "weekEndDate")
@@ -77,7 +77,7 @@ public class Timesheet {
 	
 	@ManyToOne
 	@JoinColumn(name = "USER_ID")
-	@JsonIgnore
+	@JsonIgnore(value = true)
 	private User user;
 
 	
@@ -86,8 +86,9 @@ public class Timesheet {
 		
 	}
 
+	
 	public Timesheet(int timesheetId, String userName, float mondayHours, float tuesdayHours, float wednesdayHours,
-			float thursdayHours, float fridayHours, float saturdayHours, float sundayHours, int statusId,
+			float thursdayHours, float fridayHours, float saturdayHours, float sundayHours, boolean approval,
 			String weekEndDate, LocalDateTime createDateTime, LocalDateTime updateDateTime, User user) {
 		super();
 		this.timesheetId = timesheetId;
@@ -99,12 +100,13 @@ public class Timesheet {
 		this.fridayHours = fridayHours;
 		this.saturdayHours = saturdayHours;
 		this.sundayHours = sundayHours;
-		this.statusId = statusId;
+		this.approval = approval;
 		this.weekEndDate = weekEndDate;
 		this.createDateTime = createDateTime;
 		this.updateDateTime = updateDateTime;
 		this.user = user;
 	}
+
 
 	public int getTimesheetId() {
 		return timesheetId;
@@ -178,13 +180,15 @@ public class Timesheet {
 		this.sundayHours = sundayHours;
 	}
 
-	public int getStatusId() {
-		return statusId;
+	public boolean isApproval() {
+		return approval;
 	}
 
-	public void setStatusId(int statusId) {
-		this.statusId = statusId;
+
+	public void setApproval(boolean approval) {
+		this.approval = approval;
 	}
+
 
 	public String getWeekEndDate() {
 		return weekEndDate;
@@ -223,7 +227,7 @@ public class Timesheet {
 		return "Timesheet [timesheetId=" + timesheetId + ", userName=" + userName + ", mondayHours=" + mondayHours
 				+ ", tuesdayHours=" + tuesdayHours + ", wednesdayHours=" + wednesdayHours + ", thursdayHours="
 				+ thursdayHours + ", fridayHours=" + fridayHours + ", saturdayHours=" + saturdayHours + ", sundayHours="
-				+ sundayHours + ", statusId=" + statusId + ", weekEndDate=" + weekEndDate + ", createDateTime="
+				+ sundayHours + ", approval=" + approval + ", weekEndDate=" + weekEndDate + ", createDateTime="
 				+ createDateTime + ", updateDateTime=" + updateDateTime + ", user=" + user + "]";
 	}
 	

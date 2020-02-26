@@ -48,11 +48,12 @@ public class User {
 
 	@OneToMany(mappedBy = "user")
 	@JsonProperty(value = "timesheets")
-	@JsonIgnore
+	@JsonIgnore(value = true)
 	private Set<Timesheet> timesheet;
 	
 	@OneToOne
 	@JoinColumn(name = "POSITION_ID")
+	@JsonIgnore(value = true)
 	private Position position;
 	
 	public Set<Timesheet> getTimesheet() {

@@ -9,7 +9,7 @@ class Dashboard extends Component {
     isloading: true,
     timesheets: [],
     date: new Date(),
-    approval:false
+    approval: false
   };
 
   componentDidMount() {
@@ -29,17 +29,7 @@ class Dashboard extends Component {
   render() {
     const { timesheets } = this.state;
     console.log(timesheets);
-    
-    const total = timesheets.map(sum => {
-      return sum.mondayHours + sum.tuesdayHours+sum.wednesdayHours+sum.thursdayHours+sum.fridayHours+sum.saturdayHours+sum.sundayHours;
-      // console.log(mondayHours);
-    })
 
-    const totalTest = total.map((item, i) => 
-      <td key={i}>{item}</td>
-    )
-   
-    console.log(total);
     return (
       <div>
         <h2 color="black">Dashboard</h2>
@@ -63,7 +53,7 @@ class Dashboard extends Component {
             {timesheets.map((time, index) => (
               <tr key={index}>
                 {console.log(time.timesheetId)}
-                <td>{time.timesheetId}</td>
+              
                 <td>{time.mondayHours}</td>
                 <td>{time.tuesdayHours}</td>
                 <td>{time.wednesdayHours}</td>
@@ -71,11 +61,21 @@ class Dashboard extends Component {
                 <td>{time.fridayHours}</td>
                 <td>{time.saturdayHours}</td>
                 <td>{time.sundayHours}</td>
+                <td>
+                {time.mondayHours +
+                  time.tuesdayHours +
+                  time.wednesdayHours +
+                  time.thursdayHours +
+                  time.fridayHours +
+                  time.saturdayHours +
+                  time.sundayHours}
+              </td>
+                
+               
                 <td>{time.username}</td>
-                <td>{totalTest}</td>
                 <td>{time.weekEndDate}</td>
                 <td>{time.approval}</td>
-                <button color = "success">Approve</button>
+                <button color="success">Approve</button>
               </tr>
             ))}
           </tbody>
