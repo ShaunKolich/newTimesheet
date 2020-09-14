@@ -5,7 +5,9 @@ target/
 !**/src/test/**
 **/frontend/node_modules/**
 /node_modules
-**/node_modules
+*/node_modules/*
+/.pnp
+.pnp.js
 
 ### STS ###
 .apt_generated
