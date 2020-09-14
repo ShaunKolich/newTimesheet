@@ -14,10 +14,10 @@ FROM node:14.0
 # Copies package.json and package-lock.json to Docker environment
 COPY package.json yarn.lock ./
 # Installs all node packages
-RUN yarn install
+RUN yarn start
 
 # Uses port which is used by the actual application
-EXPOSE 8095
+EXPOSE 3000
 
 # Finally runs the application
 CMD [ "yarn", "start" ]
