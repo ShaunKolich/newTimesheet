@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    enviornment {
+    environment {
         NAME = "TimeSheet"
         kubeConfigPath = "C:\\Users\\Admin\\.kube"
         registry = "skolich/timesheet"
