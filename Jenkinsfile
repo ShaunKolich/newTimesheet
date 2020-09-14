@@ -19,6 +19,7 @@ pipeline {
         stage ('Build App'){
             steps {
                 bat 'mvn install'
+                bat 'yarn install'
                 bat 'yarn start'
 
             }
