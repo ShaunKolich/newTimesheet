@@ -2,11 +2,11 @@ pipeline {
     agent any
     enviornment {
         NAME = "TimeSheet"
-        kubeConfigPath = "C:\Users\Admin\.kube"
+        kubeConfigPath = "C:\\Users\\Admin\\.kube"
         registry = "skolich/timesheet"
         registryCredential = 'docker-login'
         dockerImage = ''
-        kubectlPath = '/usr/local/bin/kubectl'
+        kubectlPath = 'C:\\Program Files\\Kubectl'
     }
 
     tools {
