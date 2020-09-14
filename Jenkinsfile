@@ -16,12 +16,15 @@ pipeline {
     }
 
     stages {
-        stage ('Build App'){
+        stage ('Build Spring Boot App'){
             steps {
                 bat 'mvn install'
+            }
+        }
+        stage ('Build React App'){
+            steps{
                 bat 'yarn install'
                 bat 'yarn start'
-
             }
         }
         stage ('Docker Build'){
