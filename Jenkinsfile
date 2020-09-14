@@ -24,12 +24,13 @@ pipeline {
         stage ('Build React App'){
             steps{
                 bat 'yarn install'
-                bat 'yarn start'
-            }
+        }
         }
         stage ('Docker Build'){
             steps {
-                echo 'build docker'
+                script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
             }
         }
         stage ('DockerHub Deploy'){
