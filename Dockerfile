@@ -16,7 +16,7 @@ FROM node:14.0
 #Creates a container layer
 # WORKDIR /frontend
 # Copies package.json and package-lock.json to Docker environment
-COPY package.json yarn.lock ./
+COPY . ./
 
 Run yarn 
 Run yarn build
