@@ -18,7 +18,8 @@ FROM node:14.0
 # Copies package.json and package-lock.json to Docker environment
 COPY package.json yarn.lock ./
 
-Run yarn add react-scripts
+Run yarn 
+Run yarn build
 
 # Finally runs the application
 CMD [ "yarn", "start" ]
