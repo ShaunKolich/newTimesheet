@@ -13,7 +13,7 @@ pipeline {
         spring = "spring"
         MYSQL_ROOT_PASSWORD="MYSQL_PASSWORD"
         network = "timesheet"
-        MYSQL_USER = "admin"
+        MYSQL_USER = "root"
     }
     tools {
         maven 'maven'
@@ -40,7 +40,7 @@ pipeline {
         }
         stage ('Docker Build Spring App'){
             steps {
-                bat "docker build --target springapp -t ${registry} ."
+                bat "docker build --target spring_app -t ${registry} ."
                 bat "docker tag ${registry}:latest ${registry}:$BUILD_NUMBER"
                 bat "docker run --publish 8090:8090 --detach --name spring_app ${registry}:$BUILD_NUMBER"    
                 
@@ -48,7 +48,7 @@ pipeline {
         }
         stage ('Docker Build React App'){
             steps {
-                bat "docker build --target reactapp -t ${name} ."
+                bat "docker build --target react_app -t ${name} ."
                 bat "docker tag ${name}:latest ${registry}:$BUILD_NUMBER"
                 bat "docker run --publish 8095:8095 --detach --name react_app ${name}:$BUILD_NUMBER"    
                 
