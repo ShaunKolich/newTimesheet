@@ -9,6 +9,8 @@ pipeline {
         dockerImage = ''
         kubectlPath = 'C:\\Program Files\\Kubectl'
         mysql = "timesheet"
+        react = "react"
+        spring = "spring"
         MYSQL_ROOT_PASSWORD="MYSQL_PASSWORD"
         network = "timesheet"
         MYSQL_USER = "admin"
@@ -40,7 +42,7 @@ pipeline {
             steps {
                 bat "docker build -t ${registry} ."
                 bat "docker tag ${registry}:latest ${registry}:$BUILD_NUMBER"
-                bat "docker run --publish 8090:8090 --detach --name runnable ${registry}:$BUILD_NUMBER"    
+                bat "docker run --publish 8090:8090 --detach --name ${spring} ${registry}:$BUILD_NUMBER"    
                 
             }
         }
@@ -48,7 +50,7 @@ pipeline {
             steps {
                 bat "docker build -t ${name} ."
                 bat "docker tag ${name}:latest ${registry}:$BUILD_NUMBER"
-                bat "docker run --publish 8095:8095 --detach --name runnable ${name}:$BUILD_NUMBER"    
+                bat "docker run --publish 8095:8095 --detach --name ${react} ${name}:$BUILD_NUMBER"    
                 
             }
         }
