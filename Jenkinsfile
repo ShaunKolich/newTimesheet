@@ -42,7 +42,7 @@ pipeline {
             steps {
                 bat "docker build -t ${registry} ."
                 bat "docker tag ${registry}:latest ${registry}:$BUILD_NUMBER"
-                bat "docker run --publish 8090:8090 --detach --name ${spring} ${registry}:$BUILD_NUMBER"    
+                bat "docker run --publish 8090:8090 --detach --name spring_app ${registry}:$BUILD_NUMBER"    
                 
             }
         }
@@ -50,7 +50,7 @@ pipeline {
             steps {
                 bat "docker build -t ${name} ."
                 bat "docker tag ${name}:latest ${registry}:$BUILD_NUMBER"
-                bat "docker run --publish 8095:8095 --detach --name ${react} ${name}:$BUILD_NUMBER"    
+                bat "docker run --publish 8095:8095 --detach --name react_app ${name}:$BUILD_NUMBER"    
                 
             }
         }
