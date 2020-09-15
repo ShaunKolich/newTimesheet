@@ -19,3 +19,5 @@ COPY package.json yarn.lock ./
 
 # Finally runs the application
 CMD [ "yarn", "start" ]
+
+# ENTRYPOINT ["/.app"]
