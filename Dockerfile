@@ -18,6 +18,7 @@ FROM node:14.0
 COPY package.json yarn.lock ./
 
 RUN yarn install
+Run yarn add webpack-dev-server
 
 # Finally runs the application
 CMD [ "yarn", "start" ]
