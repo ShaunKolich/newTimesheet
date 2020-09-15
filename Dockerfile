@@ -1,6 +1,6 @@
 #Create Spring Boot Image
 #Creates a container layer 
-FROM openjdk:8-jre-alpine
+FROM openjdk:8-jre-alpine AS springapp
 
 # WORKDIR /backend
 ENV PATH /newTimesheet/node_modules/.bin:$PATH
@@ -12,7 +12,7 @@ ADD target/newTimesheet-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java","-jar","app.jar"]
 
 #Create React Image
-FROM node:14.0
+FROM node:14.0 AS reactapp
 #Creates a container layer
 # WORKDIR /frontend
 # Copies package.json and package-lock.json to Docker environment
