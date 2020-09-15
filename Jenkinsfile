@@ -34,7 +34,7 @@ pipeline {
             steps{
                 bat "docker pull mysql"
                 bat "docker run --name ${mysql} -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} -d mysql:latest"
-                bat "docker run -it --network ${network} --rm mysql mysql -h ${mysql} -u ${MYSQL_USER} -p"
+                bat "docker run -it --network ${network} --rm mysql mysql -h${mysql} -u${MYSQL_USER} -p"
             }
         }
         stage ('Docker Build Spring App'){
