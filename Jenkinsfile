@@ -28,7 +28,7 @@ pipeline {
         }
         stage ('Docker Build'){
             steps {
-                sh "docker build -t ${registry}:$BUILD_NUMBER"
+                bat "docker build -t ${registry}:$BUILD_NUMBER"
                     
                 
             }
