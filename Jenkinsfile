@@ -56,7 +56,7 @@ pipeline {
         }
         stage ('DockerHub Deploy'){
             steps {
-                echo 'deploy docker'
+                echo 'deploy dockers'
             }
         }
         stage ('Kubernetes Deploy'){
