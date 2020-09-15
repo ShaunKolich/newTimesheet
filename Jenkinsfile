@@ -24,6 +24,7 @@ pipeline {
         stage ('Build React App'){
             steps{
                 bat 'yarn install'
+                bat 'yarn build'
         }
         }
         stage ('Docker Build'){
