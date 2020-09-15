@@ -8,7 +8,7 @@ pipeline {
         registryCredential = 'docker-login'
         dockerImage = ''
         kubectlPath = 'C:\\Program Files\\Kubectl'
-        mysql = "timesheet"
+        mysql = "skolich/timesheet"
         MYSQL_ROOT_PASSWORD="MYSQL_PASSWORD"
         network = "timesheet"
         MYSQL_USER = "admin"
@@ -34,7 +34,7 @@ pipeline {
             steps{
                 bat "docker pull mysql"
                 bat "docker run --name ${mysql} -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} -d mysql:latest"
-                bat "docker run -it --network ${network} --rm mysql mysql -h${mysql} -u${MYSQL_USER} -p"
+                bat "winpty docker run -it --network ${network} --rm mysql mysql -h${mysql} -u${MYSQL_USER} -p"
             }
         }
         stage ('Docker Build Spring App'){
