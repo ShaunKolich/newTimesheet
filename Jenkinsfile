@@ -8,7 +8,7 @@ pipeline {
         registryCredential = 'docker-login'
         dockerImage = ''
         kubectlPath = 'C:\\Program Files\\Kubectl'
-        mysql = "skolich/timesheet"
+        mysql = "timesheet"
         MYSQL_ROOT_PASSWORD="MYSQL_PASSWORD"
         network = "timesheet"
         MYSQL_USER = "admin"
