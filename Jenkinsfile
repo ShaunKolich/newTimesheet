@@ -38,19 +38,14 @@ pipeline {
                 bat "docker run --name ${mysql} -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} -d mysql:latest"
             }
         }
-        stage ('Docker Build Spring App'){
+        stage ('Docker Build Apps'){
             steps {
                 bat "docker build --target springapp -t ${registry} ."
                 bat "docker tag ${registry}:latest ${registry}:$BUILD_NUMBER"
-                bat "docker run --publish 8090:8090 --detach --name springapp ${registry}:lastest"    
-                
-            }
-        }
-        stage ('Docker Build React App'){
-            steps {
+                bat "docker run --publish 8090:8090 --detach --name springapp ${registry}:lastest"   
                 bat "docker build --target reactapp -t ${name} ."
                 bat "docker tag ${name}:latest ${name}:$BUILD_NUMBER"
-                bat "docker run --publish 8095:8095 --detach --name reactapp ${name}:lastest"    
+                bat "docker run --publish 8095:8095 --detach --name reactapp ${name}:lastest"  
                 
             }
         }
