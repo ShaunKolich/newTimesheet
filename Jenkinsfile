@@ -23,7 +23,7 @@ pipeline {
     stages {
         stage ('Build Spring Boot App'){
             steps {
-                bat 'mvn install'
+                bat 'mvn -f ~/backend/pom.xml install'
             }
         }
         stage ('Build React App'){
