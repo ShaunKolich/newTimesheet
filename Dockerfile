@@ -12,7 +12,7 @@ COPY pom.xml .
 
 # Build all the dependencies in preparation to go offline. 
 # This is a separate step so the dependencies will be cached unless 
-
+EXPOSE Port 8095
 # # Copy the project source
 # COPY src src
 # #Port Docker will be using
