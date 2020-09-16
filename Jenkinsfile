@@ -40,9 +40,8 @@ pipeline {
         }
         stage ('Docker Build'){
             steps {
-                bat "docker build -t ${registry} ."
-                bat "docker tag ${registry}:latest ${registry}:$BUILD_NUMBER"
-                bat "docker run --publish 8090:8090 --detach --name timesheet_app ${registry}:$BUILD_NUMBER"    
+              bat 'docker-compose build'  
+              bat 'docker-compose up' 
                 
             }
         }
