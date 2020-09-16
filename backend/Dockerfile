@@ -1,7 +1,7 @@
 #Create Spring Boot Image
 FROM openjdk:8-jre-alpine AS springapp
 
-WORKDIR /backend
+WORKDIR /app
 
 # Copy maven executable to the image
 COPY mvnw .
