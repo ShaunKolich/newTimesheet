@@ -40,7 +40,7 @@ pipeline {
         }
         stage ('Docker Build'){
             steps {
-                bat "docker build --target -t ${registry} ."
+                bat "docker build -t ${registry} ."
                 bat "docker tag ${registry}:latest ${registry}:$BUILD_NUMBER"
                 bat "docker run --publish 8090:8090 --detach --name runnable ${registry}:latest ${registry}:$BUILD_NUMBER"    
                 
