@@ -1,0 +1,17 @@
+.nav_container {
+    width:100%;
+ 
+    border: 2px solid red;
+    background-color: lightgray;
+   
+}
+
+.nav_container .nav_item{
+    color:white !important;
+}
+
+.nav_container .login {
+    /* background-color: red; */
+    list-style: none;
+    cursor: pointer;
+}
