@@ -3,7 +3,7 @@
 FROM openjdk:8-jre-alpine AS springapp
 
 # WORKDIR /backend
-ENV PATH /newTimesheet/node_modules/.bin:$PATH
+# ENV PATH /newTimesheet/node_modules/.bin:$PATH
 #Port Docker will be using
 EXPOSE 8090
 # ADD application to container(just the executable JAR)
