@@ -1,6 +1,6 @@
 # Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
 
-version: "1.11"
+version: "2.4"
 
 # Define services
 services:
