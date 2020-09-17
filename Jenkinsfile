@@ -14,6 +14,7 @@ pipeline {
         MYSQL_ROOT_PASSWORD="MYSQL_PASSWORD"
         network = "timesheet"
         MYSQL_USER = "root"
+        
     }
     tools {
         maven 'maven'
